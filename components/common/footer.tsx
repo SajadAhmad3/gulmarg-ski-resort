@@ -62,9 +62,9 @@ const Footer = () => {
                 <Link href="/">
                   <p className="text-md">{PHONE_NUMBER}</p>
                 </Link>
-                <Link href="/">
+                {/* <Link href="/">
                   <p className="text-md">{ALT_PHONE_NUMBER}</p>
-                </Link>
+                </Link> */}
               </div>
             </div>
             <div className="flex gap-4 items-center">
@@ -73,9 +73,9 @@ const Footer = () => {
                 <Link href="/">
                   <p className="text-md">{PHONE_NUMBER}</p>
                 </Link>
-                <Link href="/">
+                {/* <Link href="/">
                   <p className="text-md">{ALT_PHONE_NUMBER}</p>
-                </Link>
+                </Link> */}
               </div>
             </div>
             <div className="flex gap-4 items-center">
