@@ -153,7 +153,7 @@ export default function ContactUsPage() {
               Contact Us
             </h1>
             <p className="text-xl md:text-2xl text-gray-700">
-              Get in touch with us to plan your perfect Kashmir trip
+              Get in touch with us to plan your perfect Gulmarg trip
             </p>
           </div>
         </section>
@@ -186,7 +186,7 @@ export default function ContactUsPage() {
                       Get in Touch
                     </h2>
                     <p className="text-gray-700 mb-8">
-                      We're here to help you plan your perfect Kashmir adventure. 
+                      We&apos;re here to help you plan your perfect Gulmarg adventure. 
                       Reach out to us through any of the following channels.
                     </p>
 
@@ -236,7 +236,7 @@ export default function ContactUsPage() {
                         <div>
                           <h3 className="font-bold text-gray-900 mb-1">WhatsApp</h3>
                           <a 
-                            href="https://wa.me/919797877243" 
+                            href={"https://wa.me/"+PHONE_NUMBER.replace("+", "")}
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="text-primary hover:underline"
@@ -260,7 +260,7 @@ export default function ContactUsPage() {
                       <p><strong>Sunday:</strong> 10:00 AM - 4:00 PM</p>
                     </div>
                     <p className="mt-4 text-sm text-gray-600">
-                      We're available 24/7 for emergencies and urgent inquiries.
+                      We&apos;re available 24/7 for emergencies and urgent inquiries.
                     </p>
                   </CardContent>
                 </Card>
