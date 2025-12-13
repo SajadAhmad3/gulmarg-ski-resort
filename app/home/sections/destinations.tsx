@@ -42,7 +42,7 @@ export default function DestinationsSection() {
   const router = useRouter();
 
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 to-white py-16 md:py-24 px-4 md:px-8">
+    <section className="w-full bg-gradient-to-b from-gray-50 to-white py-8  px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <SectionHeading 
           topLine="Ski Areas" 
@@ -53,7 +53,7 @@ export default function DestinationsSection() {
           {destinations.map((destination) => (
             <Card 
               key={destination.id}
-              className="group overflow-hidden border-2 hover:border-primary/50 transition-all hover:shadow-xl cursor-pointer"
+              className="group overflow-hidden border-2 hover:border-primary/50 transition-all hover:shadow-xl cursor-pointer p-0"
               onClick={() => router.push(`/gulmarg#${destination.id}`)}
             >
               <div className="relative h-48 overflow-hidden">
@@ -71,7 +71,7 @@ export default function DestinationsSection() {
                   </div>
                 </div>
               </div>
-              <CardContent className="pt-4">
+              <CardContent className="pt-4 px-4">
                 <p className="text-gray-600 text-sm mb-3">{destination.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {destination.highlights.map((highlight, idx) => (

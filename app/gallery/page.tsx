@@ -76,14 +76,14 @@ export default function GalleryPage() {
                 {filteredImages.map((item) => (
                   <Card 
                     key={item.id} 
-                    className="group overflow-hidden border-2 hover:border-primary/50 transition-all hover:shadow-xl cursor-pointer"
+                    className="group overflow-hidden border-2 hover:border-primary/50 transition-all hover:shadow-xl cursor-pointer p-0"
                   >
                     <div className="relative h-64 overflow-hidden">
                       <div
                         className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
                         style={{ backgroundImage: `url(${item.image})` }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
                         <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                           <h3 className="font-bold text-lg mb-1">{item.title}</h3>
                           <div className="flex items-center gap-2 text-sm">

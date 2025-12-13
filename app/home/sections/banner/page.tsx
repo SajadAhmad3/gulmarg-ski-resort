@@ -4,6 +4,7 @@ import { slides } from "@/data/slidesData";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Phone, Calendar, Users, Send, MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { PHONE_NUMBER } from "@/data/constants";
 
 const tripDurations = [
   { value: "2", label: "2 Nights 3 Days" },
@@ -92,11 +93,17 @@ export default function BannerSection() {
         {/* Left Side - Hero Content */}
         <div className="flex-1 lg:pr-8 text-center lg:text-left text-white mb-8 lg:mb-0">
           <div className="max-w-2xl mx-auto lg:mx-0">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 drop-shadow-2xl leading-tight">
-              Ski the Himalayas in Gulmarg
+            <h1 
+              key={`heading-${currentSlide}`}
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 drop-shadow-2xl leading-tight animate-fade-in"
+            >
+              {slides[currentSlide].heading}
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 drop-shadow-xl text-white/95">
-              Experience world-class powder skiing, expert guides, and unforgettable mountain adventures in Gulmarg Ski Resort
+            <p 
+              key={`desc-${currentSlide}`}
+              className="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 drop-shadow-xl text-white/95 animate-fade-in"
+            >
+              {slides[currentSlide].description}
             </p>
             <div className="flex flex-wrap gap-4 md:gap-6 justify-center lg:justify-start mb-6">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
@@ -138,7 +145,10 @@ export default function BannerSection() {
                   Phone Number
                 </label>
                 <div className="flex">
-                  <select className="px-3 py-2.5 border border-r-0 rounded-l-lg bg-gray-50 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                  <select 
+                    aria-label="Country code"
+                    className="px-3 py-2.5 border border-r-0 rounded-l-lg bg-gray-50 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
                     <option value="+91">🇮🇳 +91</option>
                     <option value="+1">🇺🇸 +1</option>
                     <option value="+44">🇬🇧 +44</option>
@@ -168,6 +178,7 @@ export default function BannerSection() {
                   No. of Days
                 </label>
                 <select
+                  aria-label="Number of days"
                   value={days}
                   onChange={(e) => {
                     setDays(e.target.value);
@@ -196,6 +207,7 @@ export default function BannerSection() {
                   No. of People
                 </label>
                 <select
+                  aria-label="Number of people"
                   value={people}
                   onChange={(e) => {
                     setPeople(e.target.value);
@@ -228,7 +240,7 @@ export default function BannerSection() {
                 type="button"
                 variant="outline"
                 className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-2.5 text-base font-bold rounded-lg"
-                onClick={() => window.open("https://wa.me/919797877243", "_blank")}
+                onClick={() => window.open("https://wa.me/"+PHONE_NUMBER.replace("+", ""), "_blank")}
               >
                 Chat on WhatsApp
               </Button>

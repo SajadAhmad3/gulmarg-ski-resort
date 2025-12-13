@@ -42,7 +42,7 @@ const whyChooseUs = [
 
 export default function ServicesSection() {
   return (
-    <section className="w-full bg-gradient-to-b from-white to-gray-50 py-16 md:py-24 px-4 md:px-8">
+    <section className="w-full bg-gradient-to-b from-white to-gray-50 py-8  px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <SectionHeading topLine="Why Choose Us" heading="Experience Gulmarg Ski Resort with Comfort, Care & Professional Service" />
         

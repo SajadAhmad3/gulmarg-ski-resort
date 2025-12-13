@@ -104,7 +104,7 @@ export default function PackagesSection() {
   const router = useRouter();
 
   return (
-    <section className="w-full bg-white py-16 md:py-24 px-4 md:px-8">
+    <section className="w-full bg-white py-8  px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <SectionHeading 
           topLine="Our Packages" 

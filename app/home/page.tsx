@@ -12,7 +12,7 @@ const HomePage = () => {
       <Header/>
       <div className="pt-20">
         <Banner/>
-        <div className="h-24 md:h-32 lg:h-40"></div>
+        <div className="h-24 md:h-15 hidden md:block"></div>
         <ServicesSection/>
         <PackagesSection/>
         <DestinationsSection/>

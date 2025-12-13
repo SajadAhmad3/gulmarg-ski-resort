@@ -1,22 +1,27 @@
 export const slides = [
   {
-    heading: "Explore the Beauty of Kashmir",
-    subheading: "Discover serene landscapes and rich culture.",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&q=80",
+    heading: "Discover the Magic of Gulmarg",
+    description: "Your gateway to pristine snow, breathtaking mountain views, and unforgettable adventures in the heart of Kashmir",
+    image: "/images/home/peaks_banner.jpg",
   },
   {
-    heading: "Adventure Awaits",
-    subheading: "Experience thrilling activities in the mountains.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80",
+    heading: "Ride the Iconic Gulmarg Gondola",
+    description: "Experience the world's second-highest operating cable car and witness panoramic views of the snow-capped Himalayas",
+    image: "/images/home/gondola.jpg",
   },
   {
-    heading: "Cultural Heritage",
-    subheading: "Immerse yourself in the vibrant traditions of Kashmir.",
-    image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=1920&q=80",
+    heading: "World-Class Skiing Adventures",
+    description: "Carve through fresh powder on some of the best ski slopes in Asia, with expert guides and premium equipment",
+    image: "/images/home/skiing.jpg",
   },
   {
-    heading: "Relax and Unwind",
-    subheading: "Find peace in the tranquil valleys and lakes.",
-    image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1920&q=80",
+    heading: "Thrilling Snowboarding Experience",
+    description: "Master the slopes with professional snowboarding lessons and explore challenging terrains for all skill levels",
+    image: "/images/home/snowboard.jpg",
+  },
+  {
+    heading: "Explore the Beauty of Gulmarg",
+    description: "Immerse yourself in the stunning landscapes, serene valleys, and rich culture of this Himalayan paradise",
+    image: "/images/home/gulmarg.jpg",
   },
 ];
