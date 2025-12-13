@@ -374,7 +374,7 @@ export default function PackagesPage() {
               </p>
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-secondary text-white px-8 py-6 text-lg font-bold"
+                className="bg-primary hover:bg-secondary text-white md:px-8 px-4 md:py-6 py-4 md:text-lg text-sm md:font-bold font-medium"
                 onClick={() => window.location.href = "/contact-us"}
               >
                 Request Custom Package
