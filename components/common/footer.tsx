@@ -30,7 +30,7 @@ const Footer = () => {
           </Link>
 
           <h2 className="text-xl font-semibold mb-4 text-white/90">
-            Experience Kashmir with Comfort, Care & Verified Stays
+          Your Trusted Gulmarg Ski & Stay Experience
           </h2>
           <button
             className="max-w-[150px] bg-primary hover:bg-secondary transition duration-300 text-white px-6 py-3 rounded-lg text-sm font-bold"
