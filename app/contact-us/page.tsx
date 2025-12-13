@@ -7,9 +7,9 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react"
 import { PHONE_NUMBER, ALT_PHONE_NUMBER, ADDRESS, EMAIL } from "@/data/constants"
 import { useSearchParams } from "next/navigation"
-import { useState, useEffect } from "react"
+import { useState, Suspense } from "react"
 
-export default function ContactUsPage() {
+function ContactForm() {
   const searchParams = useSearchParams()
   const [formData, setFormData] = useState({
     name: "",
@@ -35,6 +35,110 @@ export default function ContactUsPage() {
   }
 
   return (
+    <Card className="border-2 shadow-xl">
+      <CardContent className="pt-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          Send us a Message
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Full Name *
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="Enter your full name"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Phone Number *
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="Enter your phone number"
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Trip Duration
+              </label>
+              <input
+                type="text"
+                name="days"
+                value={formData.days}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="e.g., 5 Days"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Number of People
+              </label>
+              <input
+                type="text"
+                name="people"
+                value={formData.people}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="e.g., 2 Pax"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Message
+            </label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows={5}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="Tell us about your travel plans..."
+            />
+          </div>
+          <Button
+            type="submit"
+            className="w-full bg-primary hover:bg-secondary text-white py-6 text-lg font-bold flex items-center justify-center gap-2"
+          >
+            <Send className="w-5 h-5" />
+            Send Message
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  )
+}
+
+export default function ContactUsPage() {
+  return (
     <>
       <Header />
       <div className="pt-20">
@@ -59,105 +163,20 @@ export default function ContactUsPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Contact Form */}
-              <Card className="border-2 shadow-xl">
-                <CardContent className="pt-6">
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                    Send us a Message
-                  </h2>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="Enter your full name"
-                      />
+              <Suspense fallback={
+                <Card className="border-2 shadow-xl">
+                  <CardContent className="pt-6">
+                    <div className="animate-pulse space-y-4">
+                      <div className="h-8 bg-gray-200 rounded w-3/4"></div>
+                      <div className="h-12 bg-gray-200 rounded"></div>
+                      <div className="h-12 bg-gray-200 rounded"></div>
+                      <div className="h-12 bg-gray-200 rounded"></div>
                     </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="Enter your email"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="Enter your phone number"
-                      />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Trip Duration
-                        </label>
-                        <input
-                          type="text"
-                          name="days"
-                          value={formData.days}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                          placeholder="e.g., 5 Days"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Number of People
-                        </label>
-                        <input
-                          type="text"
-                          name="people"
-                          value={formData.people}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                          placeholder="e.g., 2 Pax"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Message
-                      </label>
-                      <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        rows={5}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="Tell us about your travel plans..."
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      className="w-full bg-primary hover:bg-secondary text-white py-6 text-lg font-bold flex items-center justify-center gap-2"
-                    >
-                      <Send className="w-5 h-5" />
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              }>
+                <ContactForm />
+              </Suspense>
 
               {/* Contact Information */}
               <div className="space-y-6">
