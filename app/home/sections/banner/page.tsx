@@ -126,7 +126,7 @@ export default function BannerSection() {
         </div>
 
         {/* Right Side - Booking Form */}
-        <div className="w-full lg:w-[420px] xl:w-[480px]">
+        <div className="w-full lg:w-[420px] xl:w-[480px] hidden md:block-">
           <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 border border-gray-100">
             <div className="mb-6">
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
