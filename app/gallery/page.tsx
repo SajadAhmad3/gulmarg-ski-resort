@@ -7,17 +7,17 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Video, MapPin, Snowflake } from "lucide-react"
 
 const galleryImages = [
-  { id: 1, title: "Gulmarg Gondola", category: "Skiing", image: "/images/gandola.jpg" },
-  { id: 2, title: "Powder Skiing", category: "Skiing", image: "/images/client.jpg" },
-  { id: 3, title: "Apharwat Peak", category: "Mountains", image: "/images/gulmarg5.jpg" },
-  { id: 4, title: "Winter Landscape", category: "Winter", image: "/images/gulmarg4.jpg" },
-  { id: 5, title: "Ski Runs", category: "Skiing", image: "/images/client2.jpg" },
-  { id: 7, title: "Snow Covered Mountains", category: "Mountains", image: "/images/gulmarg4.jpg" },
-  { id: 8, title: "Hotels", category: "Accommodation", image: "/images/gulmarg3.jpg" },
-  { id: 9, title: "Backcountry Skiing", category: "Skiing", image: "/images/heliski.jpg" },
-  { id: 10, title: "Gondola Phase 2", category: "Skiing", image: "/images/taj4.jpg" },
-  { id: 11, title: "Beginner Slopes", category: "Skiing", image: "/images/baby.jpg" },
-  { id: 12, title: "Mountain Views", category: "Mountains", image: "/images/gulmarg.jpg" },
+  { id: 1, title: "Gulmarg Gondola", category: "Skiing", image: "/images/gandola.JPG" },
+  { id: 2, title: "Powder Skiing", category: "Skiing", image: "/images/client.JPG" },
+  { id: 3, title: "Apharwat Peak", category: "Mountains", image: "/images/gulmarg5.JPG" },
+  { id: 4, title: "Winter Landscape", category: "Winter", image: "/images/gulmarg4.JPG" },
+  { id: 5, title: "Ski Runs", category: "Skiing", image: "/images/client2.JPG" },
+  { id: 7, title: "Snow Covered Mountains", category: "Mountains", image: "/images/gulmarg4.JPG" },
+  { id: 8, title: "Hotels", category: "Accommodation", image: "/images/gulmarg3.JPG" },
+  { id: 9, title: "Backcountry Skiing", category: "Skiing", image: "/images/heliski.JPG" },
+  { id: 10, title: "Gondola Phase 2", category: "Skiing", image: "/images/taj4.JPG" },
+  { id: 11, title: "Beginner Slopes", category: "Skiing", image: "/images/baby.JPG" },
+  { id: 12, title: "Mountain Views", category: "Mountains", image: "/images/gulmarg.JPG" },
   { id: 13, title: "Huts", category: "Accommodation", image: "/images/hut.JPG" },
 ]
 
