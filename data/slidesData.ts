@@ -7,7 +7,7 @@ export const slides = [
   {
     heading: "Ride the Iconic Gulmarg Gondola",
     description: "Experience the world's second-highest operating cable car and witness panoramic views of the snow-capped Himalayas",
-    image: "/images/home/gondola.jpg",
+    image: "/images/chairlift.jpg",
   },
   {
     heading: "World-Class Skiing Adventures",

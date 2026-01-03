@@ -9,31 +9,59 @@ import { useRouter } from "next/navigation";
 
 const destinations = [
   {
-    id: "gondola",
-    name: "Gulmarg Gondola",
-    description: "One of the highest cable cars in the world, providing access to incredible skiing terrain.",
-    image: "/images/home/peaks_banner.jpg",
-    highlights: ["Phase 1 & 2", "High Altitude", "Powder Access"]
+    id: "apharwat-peak",
+    name: "Apharwat Peak",
+    description: "The highest skiing point at 4,390m, accessible via Gondola Phase II. Challenging expert terrain with incredible powder.",
+    image: "/images/taj4.JPG",
+    highlights: ["4,390m Elevation", "Expert Terrain", "Phase II Access"]
+  },
+  {
+    id: "gondola-phase-2",
+    name: "Gondola Phase II",
+    description: "Extends from Kongdori to near Apharwat Peak at 3,980m. Steep and challenging terrain for advanced skiers.",
+    image: "/images/client.jpg",
+    highlights: ["3,980m Elevation", "Advanced Slopes", "Steep Terrain"]
+  },
+  {
+    id: "gondola-phase-1",
+    name: "Gondola Phase I (Kongdori)",
+    description: "Connects Gulmarg to Kongdori at 3,050m. Gentle slopes perfect for beginners and intermediate skiers.",
+    image: "/images/client3.JPG",
+    highlights: ["3,050m Elevation", "Beginner Friendly", "Intermediate Runs"]
+  },
+  {
+    id: "marys-shoulder",
+    name: "Mary's Shoulder",
+    description: "Accessible via chairlift, reaching 3,600m. Popular intermediate area with great progression terrain.",
+    image: "/images/chairlift.jpg",
+    highlights: ["3,600m Elevation", "Intermediate", "Chairlift Access"]
+  },
+  {
+    id: "khilanmarg",
+    name: "Khilanmarg",
+    description: "Located 6km from Gulmarg, offering diverse winter ski runs with panoramic views of the Kashmir Valley.",
+    image: "/images/gulmarg4.JPG",
+    highlights: ["Valley Views", "Varied Terrain", "Scenic Runs"]
   },
   {
     id: "main-bowl",
     name: "Main Gondola Bowl",
     description: "The primary skiing area accessible from the gondola, offering diverse terrain for all levels.",
-    image: "/images/home/peaks_banner.jpg",
+    image: "/images/taj3.JPG",
     highlights: ["Powder Zones", "Varied Terrain", "Guided Tours"]
   },
   {
     id: "babyslope",
-    name: "Babyslope",
-    description: "Perfect beginner area with surface lifts, ideal for learning to ski and snowboard.",
-    image: "/images/home/peaks_banner.jpg",
-    highlights: ["Beginner Friendly", "Surface Lifts", "Lessons Available"]
+    name: "Bunny Slopes / Babyslope",
+    description: "Perfect beginner area in the meadows with button lifts, ideal for learning to ski and snowboard.",
+    image: "/images/baby.JPG",
+    highlights: ["Beginner Friendly", "Button Lifts", "Lessons Available"]
   },
   {
     id: "backcountry",
     name: "Backcountry Zones",
-    description: "Expert terrain outside resort boundaries, requiring professional guides for safety.",
-    image: "/images/home/peaks_banner.jpg",
+    description: "Expert terrain outside resort boundaries, requiring professional guides for safety and navigation.",
+    image: "/images/heliski.JPG",
     highlights: ["Expert Only", "Untracked Powder", "Guide Required"]
   }
 ];

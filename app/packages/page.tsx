@@ -235,8 +235,8 @@ export default function PackagesPage() {
         {/* Hero Section */}
         <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center bg-gradient-to-br from-primary/20 via-secondary/20 to-primary/10">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{ backgroundImage: "url('/images/home/peaks_banner.jpg')" }}
+            className="absolute inset-0 bg-cover bg-center opacity-50"
+            style={{ backgroundImage: "url('/images/taj4.JPG')" }}
           />
           <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">

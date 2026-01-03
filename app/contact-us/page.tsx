@@ -83,7 +83,7 @@ function ContactForm() {
               placeholder="Enter your phone number"
             />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Trip Duration
@@ -107,7 +107,7 @@ function ContactForm() {
                 value={formData.people}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                placeholder="e.g., 2 Pax"
+                placeholder="e.g., 2 People"
               />
             </div>
           </div>

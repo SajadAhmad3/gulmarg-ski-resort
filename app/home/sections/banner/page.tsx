@@ -223,7 +223,7 @@ export default function BannerSection() {
 
               <Button
                 type="submit"
-                className="w-full bg-primary hover:bg-secondary text-white py-2.5 text-base font-bold rounded-lg flex items-center justify-center gap-2"
+                className="w-full bg-primary hover:bg-secondary text-white py-2.5 text-base font-bold rounded-lg flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
                 Request Quote
@@ -231,7 +231,7 @@ export default function BannerSection() {
               <Button
                 type="button"
                 variant="outline"
-                className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-2.5 text-base font-bold rounded-lg"
+                className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-2.5 text-base font-bold rounded-lg cursor-pointer"
                 onClick={() => window.open("https://wa.me/"+PHONE_NUMBER.replace("+", ""), "_blank")}
               >
                 Chat on WhatsApp

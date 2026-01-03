@@ -12,7 +12,7 @@ export default function AboutUsPage() {
         <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center bg-gradient-to-br from-primary/20 via-secondary/20 to-primary/10">
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{ backgroundImage: "url('/images/home/peaks_banner.jpg')" }}
+            style={{ backgroundImage: "url('/images/gulmarg2.JPG')" }}
           />
           <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
@@ -41,7 +41,7 @@ export default function AboutUsPage() {
                 ensure your safety and enjoyment.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
-                We offer exactly what you need — simplicity, comfort, and professionalism. Whether you're a beginner 
+                We offer exactly what you need &mdash; simplicity, comfort, and professionalism. Whether you&apos;re a beginner 
                 learning to ski, an intermediate looking to improve, or an expert seeking the best powder runs, we have 
                 the perfect package for you. From economic ski bum packages to deluxe luxury experiences, we make it 
                 easy to book your Himalayan ski adventure.
@@ -102,7 +102,7 @@ export default function AboutUsPage() {
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
                   <p className="text-gray-700 leading-relaxed">
                     To make Gulmarg Ski Resort accessible to skiers and snowboarders worldwide by providing exceptional, 
-                    personalized ski experiences that showcase the region's incredible terrain, deep powder, and warm 
+                    personalized ski experiences that showcase the region&apos;s incredible terrain, deep powder, and warm 
                     hospitality while ensuring safety, comfort, and value for money.
                   </p>
                 </CardContent>
