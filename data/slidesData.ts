@@ -2,7 +2,7 @@ export const slides = [
   {
     heading: "Discover the Magic of Gulmarg",
     description: "Your gateway to pristine snow, breathtaking mountain views, and unforgettable adventures in the heart of Kashmir",
-    image: "/images/gulmarg2.jpg",
+    image: "/images/gulmarg2.JPG",
   },
   {
     heading: "Ride the Iconic Gulmarg Gondola",
@@ -12,7 +12,7 @@ export const slides = [
   {
     heading: "World-Class Skiing Adventures",
     description: "Carve through fresh powder on some of the best ski slopes in Asia, with expert guides and premium equipment",
-    image: "/images/client2.jpg",
+    image: "/images/client2.JPG",
   },
   {
     heading: "Thrilling Snowboarding Experience",
@@ -22,6 +22,6 @@ export const slides = [
   {
     heading: "Explore the Beauty of Gulmarg",
     description: "Immerse yourself in the stunning landscapes, serene valleys, and rich culture of this Himalayan paradise",
-    image: "/images/gulmarg4.jpg",
+    image: "/images/gulmarg4.JPG",
   },
 ];
