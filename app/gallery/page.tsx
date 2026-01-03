@@ -18,7 +18,7 @@ const galleryImages = [
   { id: 10, title: "Gondola Phase 2", category: "Skiing", image: "/images/taj4.jpg" },
   { id: 11, title: "Beginner Slopes", category: "Skiing", image: "/images/baby.jpg" },
   { id: 12, title: "Mountain Views", category: "Mountains", image: "/images/gulmarg.jpg" },
-  { id: 13, title: "Huts", category: "Accommodation", image: "/images/hut.jpg" },
+  { id: 13, title: "Huts", category: "Accommodation", image: "/images/hut.JPG" },
 ]
 
 const categories = ["All", "Skiing", "Mountains", "Winter", "Accommodation"]
