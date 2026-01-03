@@ -244,14 +244,14 @@ export default function BannerSection() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border border-white/30 rounded-full p-2 transition-all"
+        className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border border-white/30 rounded-full p-2 transition-all cursor-pointer"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border border-white/30 rounded-full p-2 transition-all"
+        className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border border-white/30 rounded-full p-2 transition-all cursor-pointer"
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />
