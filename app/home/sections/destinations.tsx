@@ -19,7 +19,7 @@ const destinations = [
     id: "gondola-phase-2",
     name: "Gondola Phase II",
     description: "Extends from Kongdori to near Apharwat Peak at 3,980m. Steep and challenging terrain for advanced skiers.",
-    image: "/images/client.jpg",
+    image: "/images/client.JPG",
     highlights: ["3,980m Elevation", "Advanced Slopes", "Steep Terrain"]
   },
   {
