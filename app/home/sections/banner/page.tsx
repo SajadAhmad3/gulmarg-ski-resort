@@ -18,16 +18,16 @@ const tripDurations = [
 
 const peopleOptions = [
   { value: "1", label: "Solo Trip" },
-  { value: "2", label: "2 Pax" },
-  { value: "3", label: "3 Pax" },
-  { value: "4", label: "4 Pax" },
-  { value: "5", label: "5 Pax" },
-  { value: "6", label: "6 Pax" },
-  { value: "7", label: "7 Pax" },
-  { value: "8", label: "8 Pax" },
-  { value: "9", label: "9 Pax" },
-  { value: "10", label: "10 Pax" },
-  { value: "12+", label: "12 To More" },
+  { value: "2", label: "2 People" },
+  { value: "3", label: "3 People" },
+  { value: "4", label: "4 People" },
+  { value: "5", label: "5 People" },
+  { value: "6", label: "6 People" },
+  { value: "7", label: "7 People" },
+  { value: "8", label: "8 People" },
+  { value: "9", label: "9 People" },
+  { value: "10", label: "10 People" },
+  { value: "12+", label: "12+ People" },
 ];
 
 export default function BannerSection() {
@@ -140,19 +140,11 @@ export default function BannerSection() {
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Phone Number */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2 ">
                   <Phone className="inline w-4 h-4 mr-1" />
                   Phone Number
                 </label>
                 <div className="flex">
-                  <select 
-                    aria-label="Country code"
-                    className="px-3 py-2.5 border border-r-0 rounded-l-lg bg-gray-50 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    <option value="+91">🇮🇳 +91</option>
-                    <option value="+1">🇺🇸 +1</option>
-                    <option value="+44">🇬🇧 +44</option>
-                  </select>
                   <input
                     type="tel"
                     value={phone}
@@ -161,7 +153,7 @@ export default function BannerSection() {
                       setErrors({ ...errors, phone: "" });
                     }}
                     placeholder="Enter phone number"
-                    className={`flex-1 px-4 py-2.5 border rounded-r-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent ${
+                    className={`flex-1 px-4 py-2.5 border rounded-lg text-sm focus:ring-0 focus:ring-primary focus:border-transparent ${
                       errors.phone ? "border-red-500" : "border-gray-300"
                     }`}
                   />
