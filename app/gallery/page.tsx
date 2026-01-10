@@ -161,18 +161,19 @@ export default function GalleryPage() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {galleryVideos.map((video) => (
-                  <Card key={video.id} className="border-2 hover:border-primary/50 transition-all hover:shadow-xl overflow-hidden">
-                    <CardContent className="pt-6 p-0">
-                      <div className="relative h-64 bg-black rounded-t-lg overflow-hidden">
+                  <Card key={video.id} className="border-2 hover:border-primary/50 transition-all hover:shadow-xl overflow-hidden p-0">
+                    <CardContent className="p-0">
+                      <div className="relative w-full bg-black rounded-t-lg overflow-hidden">
                         <video
                           ref={(el) => {
                             videoRefs.current[video.id] = el;
                           }}
-                          className="w-full h-full object-cover"
+                          className="w-full h-[300px] max-h-[300px] object-contain"
                           controls
                           preload="metadata"
                           playsInline
                           onPlay={() => handleVideoPlay(video.id)}
+                          onFocus={() => handleVideoPlay(video.id) }
                         >
                           <source src={video.video} type="video/mp4" />
                           Your browser does not support the video tag.
