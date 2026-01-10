@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Header from "@/components/common/header"
 import Footer from "@/components/common/footer"
 import { Card, CardContent } from "@/components/ui/card"
-import { Video, MapPin, Snowflake } from "lucide-react"
+import { MapPin, Snowflake } from "lucide-react"
 
 const galleryImages = [
   { id: 1, title: "Gulmarg Gondola", category: "Skiing", image: "/images/gandola.JPG" },
@@ -23,12 +23,56 @@ const galleryImages = [
 
 const categories = ["All", "Skiing", "Mountains", "Winter", "Accommodation"]
 
+const galleryVideos = [
+  { 
+    id: 1, 
+    title: "Gulmarg Ski Resort Experience", 
+    description: "Experience the beauty and excitement of Gulmarg Ski Resort",
+    video: "/images/videos/IMG_1796.MP4" 
+  },
+  { 
+    id: 2, 
+    title: "Winter Adventures in Gulmarg", 
+    description: "Watch the stunning winter landscapes and skiing adventures",
+    video: "/images/videos/IMG_1797.MP4" 
+  },
+  { 
+    id: 3, 
+    title: "Gulmarg Mountain Views", 
+    description: "Breathtaking views of the mountains and snow-covered terrain",
+    video: "/images/videos/IMG_1798.MP4" 
+  },
+  { 
+    id: 4, 
+    title: "Skiing in Gulmarg", 
+    description: "Watch skiers enjoying the slopes in Gulmarg",
+    video: "/images/videos/IMG_1799.MP4" 
+  },
+  { 
+    id: 5, 
+    title: "Gulmarg Moments", 
+    description: "Capturing special moments at Gulmarg Ski Resort",
+    video: "/images/videos/IMG_1800.MP4" 
+  },
+]
+
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
   const filteredImages = selectedCategory === "All" 
     ? galleryImages 
     : galleryImages.filter(img => img.category === selectedCategory);
+
+  const handleVideoPlay = (videoId: number) => {
+    // Pause all other videos
+    Object.keys(videoRefs.current).forEach((key) => {
+      const id = parseInt(key);
+      if (id !== videoId && videoRefs.current[id]) {
+        videoRefs.current[id]?.pause();
+      }
+    });
+  };
 
   return (
     <>
@@ -116,58 +160,35 @@ export default function GalleryPage() {
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Card className="border-2 hover:border-primary/50 transition-all hover:shadow-xl">
-                  <CardContent className="pt-6">
-                    <div className="relative h-64 bg-gradient-to-br from-slate-800 to-slate-600 rounded-lg flex items-center justify-center">
-                      <Video className="w-16 h-16 text-white/50" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mt-4 mb-2">
-                      Gulmarg Ski Resort Guide
-                    </h3>
-                    <p className="text-gray-600">
-                      A comprehensive guide to skiing and snowboarding in Gulmarg
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="border-2 hover:border-primary/50 transition-all hover:shadow-xl">
-                  <CardContent className="pt-6">
-                    <div className="relative h-64 bg-gradient-to-br from-slate-800 to-slate-600 rounded-lg flex items-center justify-center">
-                      <Video className="w-16 h-16 text-white/50" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mt-4 mb-2">
-                      Winter in Gulmarg
-                    </h3>
-                    <p className="text-gray-600">
-                      Experience the magical winter wonderland and powder skiing in Gulmarg
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="border-2 hover:border-primary/50 transition-all hover:shadow-xl">
-                  <CardContent className="pt-6">
-                    <div className="relative h-64 bg-gradient-to-br from-slate-800 to-slate-600 rounded-lg flex items-center justify-center">
-                      <Video className="w-16 h-16 text-white/50" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mt-4 mb-2">
-                      Gulmarg Gondola Experience
-                    </h3>
-                    <p className="text-gray-600">
-                      Ride the highest cable car in the world and access incredible ski terrain
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="border-2 hover:border-primary/50 transition-all hover:shadow-xl">
-                  <CardContent className="pt-6">
-                    <div className="relative h-64 bg-gradient-to-br from-slate-800 to-slate-600 rounded-lg flex items-center justify-center">
-                      <Video className="w-16 h-16 text-white/50" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mt-4 mb-2">
-                      Powder Skiing in Gulmarg
-                    </h3>
-                    <p className="text-gray-600">
-                      Watch expert skiers ride the best powder in the Himalayas
-                    </p>
-                  </CardContent>
-                </Card>
+                {galleryVideos.map((video) => (
+                  <Card key={video.id} className="border-2 hover:border-primary/50 transition-all hover:shadow-xl overflow-hidden">
+                    <CardContent className="pt-6 p-0">
+                      <div className="relative h-64 bg-black rounded-t-lg overflow-hidden">
+                        <video
+                          ref={(el) => {
+                            videoRefs.current[video.id] = el;
+                          }}
+                          className="w-full h-full object-cover"
+                          controls
+                          preload="metadata"
+                          playsInline
+                          onPlay={() => handleVideoPlay(video.id)}
+                        >
+                          <source src={video.video} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                      <div className="p-4">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                          {video.title}
+                        </h3>
+                        <p className="text-gray-600">
+                          {video.description}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>
