@@ -8,6 +8,10 @@ import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react"
 import { PHONE_NUMBER, ALT_PHONE_NUMBER, ADDRESS, EMAIL } from "@/data/constants"
 import { useSearchParams } from "next/navigation"
 import { useState, Suspense } from "react"
+import emailjs from '@emailjs/browser'
+import { toast } from "sonner"
+
+
 
 function ContactForm() {
   const searchParams = useSearchParams()
@@ -20,12 +24,29 @@ function ContactForm() {
     message: ""
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
-    alert("Thank you for contacting us! We'll get back to you soon.")
+    setLoading(true)
+  
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formData,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
+      toast.success("Thank you for contacting us! We'll get back to you soon.")
+      setFormData({ name:"", email:"", phone:"", days:"", people:"", message:"" })
+    } catch {
+      toast.error("Something went wrong. Please try again.")
+    } finally {
+      setLoading(false)
+    }
   }
+  
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -126,10 +147,11 @@ function ContactForm() {
           </div>
           <Button
             type="submit"
+            disabled={loading}
             className="w-full bg-primary hover:bg-secondary text-white py-6 text-lg font-bold flex items-center justify-center gap-2 cursor-pointer"
           >
             <Send className="w-5 h-5" />
-            Send Message
+            {loading ? "Sending..." : "Send Message"}
           </Button>
         </form>
       </CardContent>
