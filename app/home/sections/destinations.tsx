@@ -81,10 +81,10 @@ export default function DestinationsSection() {
           {destinations.map((destination) => (
             <Card 
               key={destination.id}
-              className="group overflow-hidden border-2 hover:border-primary/50 transition-all hover:shadow-xl cursor-pointer p-0"
+              className="group overflow-hidden border-2 hover:border-primary/50 transition-all hover:shadow-xl cursor-pointer p-0 pb-4"
               onClick={() => router.push(`/gulmarg#${destination.id}`)}
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden ">
                 <div
                   className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
                   style={{ backgroundImage: `url(${destination.image})` }}
