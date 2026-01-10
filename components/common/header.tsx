@@ -54,7 +54,7 @@ const Header = () => {
 
             <div className="hidden lg:block">
               <button
-                className="bg-primary hover:bg-secondary transition duration-300 text-white px-4 md:px-6 py-2 rounded-full text-sm md:text-base font-bold"
+                className="bg-primary hover:bg-secondary transition duration-300 text-white px-4 md:px-6 py-2 rounded-full text-sm md:text-base font-bold cursor-pointer"
                 onClick={handleContactUsClick}
               >
                 Contact Us

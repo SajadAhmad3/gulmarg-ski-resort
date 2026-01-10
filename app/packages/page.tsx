@@ -262,7 +262,7 @@ export default function PackagesPage() {
                 <button
                   key={category.value}
                   onClick={() => setSelectedCategory(category.value)}
-                  className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-base font-semibold transition-all ${
+                  className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-base font-semibold transition-all cursor-pointer ${
                     selectedCategory === category.value
                       ? "bg-primary text-white shadow-lg"
                       : "bg-white text-gray-700 border-2 border-gray-300 hover:border-primary hover:text-primary"
@@ -283,7 +283,7 @@ export default function PackagesPage() {
                   </span>
                   <button
                     onClick={() => setSelectedCategory("all")}
-                    className="ml-2 hover:bg-primary/20 rounded-full p-1"
+                    className="ml-2 hover:bg-primary/20 rounded-full p-1 cursor-pointer"
                     aria-label="Clear filter"
                   >
                     <X className="w-4 h-4" />
@@ -344,7 +344,7 @@ export default function PackagesPage() {
                       </div>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full bg-primary hover:bg-secondary text-white font-bold">
+                      <Button className="w-full bg-primary hover:bg-secondary text-white font-bold cursor-pointer">
                         Book Now
                       </Button>
                     </CardFooter>
@@ -356,7 +356,7 @@ export default function PackagesPage() {
                 <p className="text-gray-600 text-lg">No packages found in this category.</p>
                 <Button
                   onClick={() => setSelectedCategory("all")}
-                  className="mt-4 bg-primary hover:bg-secondary text-white"
+                  className="mt-4 bg-primary hover:bg-secondary text-white cursor-pointer"
                 >
                   View All Packages
                 </Button>
@@ -374,7 +374,7 @@ export default function PackagesPage() {
               </p>
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-secondary text-white md:px-8 px-4 md:py-6 py-4 md:text-lg text-sm md:font-bold font-medium"
+                className="bg-primary hover:bg-secondary text-white md:px-8 px-4 md:py-6 py-4 md:text-lg text-sm md:font-bold font-medium cursor-pointer"
                 onClick={() => window.location.href = "/contact-us"}
               >
                 Request Custom Package

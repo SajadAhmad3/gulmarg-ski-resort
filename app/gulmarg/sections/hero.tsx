@@ -179,7 +179,7 @@ export default function HeroSection() {
 
             <Button
               type="submit"
-              className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-lg font-bold rounded-lg"
+              className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-lg font-bold rounded-lg cursor-pointer"
             >
               Book Now
             </Button>

@@ -269,7 +269,7 @@ export default function BannerSection() {
               }
               intervalRef.current = setInterval(nextSlide, 5000);
             }}
-            className={`h-2 rounded-full transition-all ${
+            className={`h-2 rounded-full transition-all cursor-pointer ${
               index === currentSlide
                 ? "w-8 bg-white"
                 : "w-2 bg-white/50 hover:bg-white/75"

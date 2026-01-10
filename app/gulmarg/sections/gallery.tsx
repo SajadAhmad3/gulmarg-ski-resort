@@ -32,7 +32,7 @@ export default function GallerySection() {
                 className="h-64 rounded-lg bg-cover bg-center mb-4"
                 style={{ backgroundImage: "url('/images/home/peaks_banner.jpg')" }}
               />
-              <Button className="w-full bg-primary hover:bg-primary/90">
+              <Button className="w-full bg-primary hover:bg-primary/90 cursor-pointer">
                 View Gallery
               </Button>
             </CardContent>
@@ -55,7 +55,7 @@ export default function GallerySection() {
               >
                 <Video className="w-16 h-16 text-white/50" />
               </div>
-              <Button className="w-full bg-primary hover:bg-primary/90">
+              <Button className="w-full bg-primary hover:bg-primary/90 cursor-pointer">
                 Watch Videos
               </Button>
             </CardContent>
@@ -70,7 +70,7 @@ export default function GallerySection() {
                 Discover the best time to ski Gulmarg — explore our comprehensive guide to 
                 winter conditions, weather patterns, and optimal skiing periods.
               </p>
-              <Button variant="outline" className="bg-white text-slate-900 hover:bg-white/90">
+              <Button variant="outline" className="bg-white text-slate-900 hover:bg-white/90 cursor-pointer">
                 Learn More
               </Button>
             </CardContent>

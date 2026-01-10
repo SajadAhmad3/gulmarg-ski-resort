@@ -119,7 +119,7 @@ export default function PackagesSection() {
                         </p>
                       </CardContent>
                       <CardFooter>
-                        <Button className="w-full bg-primary hover:bg-primary/90">
+                        <Button className="w-full bg-primary hover:bg-primary/90 cursor-pointer">
                           Choose Your Package
                         </Button>
                       </CardFooter>

@@ -103,7 +103,7 @@ export default function GalleryPage() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-2 rounded-full border-2 transition-all font-semibold ${
+                  className={`px-6 py-2 rounded-full border-2 transition-all font-semibold cursor-pointer ${
                     selectedCategory === category
                       ? "border-primary bg-primary text-white"
                       : "border-gray-300 hover:border-primary hover:bg-primary hover:text-white"

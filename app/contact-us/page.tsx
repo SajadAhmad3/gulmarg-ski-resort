@@ -126,7 +126,7 @@ function ContactForm() {
           </div>
           <Button
             type="submit"
-            className="w-full bg-primary hover:bg-secondary text-white py-6 text-lg font-bold flex items-center justify-center gap-2"
+            className="w-full bg-primary hover:bg-secondary text-white py-6 text-lg font-bold flex items-center justify-center gap-2 cursor-pointer"
           >
             <Send className="w-5 h-5" />
             Send Message

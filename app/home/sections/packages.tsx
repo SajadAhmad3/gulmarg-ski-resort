@@ -220,7 +220,7 @@ export default function PackagesSection() {
               <CardFooter>
                 <Button 
                   onClick={() => handleBookNow(pkg)}
-                  className="w-full cursor-pointer bg-primary hover:bg-secondary text-white font-bold"
+                  className="w-full bg-primary hover:bg-secondary text-white font-bold cursor-pointer"
                 >
                   Book Now
                 </Button>
@@ -233,7 +233,7 @@ export default function PackagesSection() {
           <Button
             size="lg"
             variant="outline"
-            className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-6 text-lg font-bold"
+            className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-6 text-lg font-bold cursor-pointer"
             onClick={() => router.push("/packages")}
           >
             View All Packages
@@ -357,7 +357,7 @@ export default function PackagesSection() {
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-3 sm:pt-4">
               <Button
                 type="submit"
-                className="w-full sm:flex-1 bg-primary hover:bg-secondary text-white font-bold py-5 sm:py-6 text-sm sm:text-base"
+                className="w-full sm:flex-1 bg-primary hover:bg-secondary text-white font-bold py-5 sm:py-6 text-sm sm:text-base cursor-pointer"
               >
                 <Send className="w-4 h-4 mr-2" />
                 Request Quote
@@ -365,7 +365,7 @@ export default function PackagesSection() {
               <Button
                 type="button"
                 onClick={handleWhatsApp}
-                className="w-full sm:flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-5 sm:py-6 text-sm sm:text-base"
+                className="w-full sm:flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-5 sm:py-6 text-sm sm:text-base cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 WhatsApp

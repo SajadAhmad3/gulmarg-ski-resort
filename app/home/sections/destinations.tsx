@@ -120,7 +120,7 @@ export default function DestinationsSection() {
           <Button
             size="lg"
             variant="outline"
-            className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-6 text-lg font-bold"
+            className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-6 text-lg font-bold cursor-pointer"
             onClick={() => router.push("/gulmarg")}
           >
             Learn More About Gulmarg
