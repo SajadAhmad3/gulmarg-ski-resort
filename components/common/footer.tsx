@@ -26,8 +26,14 @@ const Footer = () => {
     <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
       <div className="max-w-[1300px] mx-auto grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 px-4 pb-4 gap-8 min-h-[400px] pt-10">
         <div className="flex flex-col gap-4">
-          <Link href="/" className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Gulmarg Ski Resort
+        <Link href="/" className="relative w-[50px] h-[50px] md:w-[80px] md:h-[80px]">
+            <Image
+              src="/GSR-logo-2.png"
+              alt="logo"
+              fill
+              priority
+              className="w-full h-full object-contain"
+            />
           </Link>
 
           <h2 className="text-xl font-semibold mb-4 text-white/90">

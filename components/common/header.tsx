@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import navigationData from "@/data/nav.json";
 import Link from "next/link";
 import Menu from "@/components/common/menu";
+import Image from "next/image";
 
 const Header = () => {
   const router = useRouter();
@@ -19,19 +20,15 @@ const Header = () => {
         className={`relative z-10 mx-auto pl-4 md:pl-8 pr-5 md:pr-10 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-lg text-gray-900 h-20`}
       >
         <div className="flex items-center justify-between w-full mx-auto h-20">
-          {/* <Link href="/" className="relative w-[120px] h-[50px] md:w-[180px] md:h-[80px]">
+          <Link href="/" className="relative w-[50px] h-[50px] md:w-[80px] md:h-[80px]">
             <Image
-              src="/images/wildways_logo.png"
+              src="/GSR-logo.png"
               alt="logo"
               fill
               priority
               className="w-full h-full object-contain"
             />
-          </Link> */}
-            <Link href="/" className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hover:opacity-80 transition-opacity">
-              Gulmarg Ski Resort
-            </Link>
-
+          </Link>
           <div className="flex items-center justify-between gap-4 md:gap-6">
             <ul className="lg:flex hidden h-20 items-center">
               {navigationData.map((item, index) => {
