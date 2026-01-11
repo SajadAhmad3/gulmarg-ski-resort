@@ -5,8 +5,19 @@ import Header from "@/components/common/header"
 import Footer from "@/components/common/footer"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Calendar, CheckCircle, X } from "lucide-react"
+import { Calendar, CheckCircle, X , MessageCircle, Send } from "lucide-react"
 import SectionHeading from "@/components/ui/section-heading"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { PHONE_NUMBER } from "@/data/constants";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
 type PackageCategory = "all" | "beginner" | "powder" | "heliski" | "economic" | "comfort" | "deluxe";
 
@@ -223,10 +234,95 @@ const categories: { value: PackageCategory; label: string }[] = [
 
 export default function PackagesPage() {
   const [selectedCategory, setSelectedCategory] = useState<PackageCategory>("all");
+  const [selectedPackage, setSelectedPackage] = useState<typeof packages[0] | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    numberOfPersons: "",
+  });
 
   const filteredPackages = selectedCategory === "all" 
     ? packages 
     : packages.filter(pkg => pkg.category === selectedCategory);
+
+    const handleBookNow = (pkg: typeof packages[0]) => {
+      setSelectedPackage(pkg);
+      setIsDialogOpen(true);
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        numberOfPersons: "",
+      });
+    };
+  
+    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    };
+
+    const handleRequestQuote = async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!selectedPackage) return;
+    
+      setLoading(true);
+    
+      try {
+        await emailjs.send(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            numberOfPersons: formData.numberOfPersons,
+    
+            // Package details
+            package_name: selectedPackage.title,
+            duration: selectedPackage.duration,
+            price: selectedPackage.price,
+          },
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        );
+    
+        toast.success("Thank you! We’ll contact you shortly.");
+        setIsDialogOpen(false);
+    
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          numberOfPersons: "",
+        });
+      } catch (error) {
+        toast.error("Something went wrong. Please try again.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+  
+    const handleWhatsApp = () => {
+      if (!selectedPackage) return;
+      
+      const message = `Hi! I'm interested in booking: *${selectedPackage.title}*\n\n` +
+        `Duration: ${selectedPackage.duration}\n` +
+        `Price: ${selectedPackage.price}\n\n` +
+        `My Details:\n` +
+        `Name: ${formData.name || 'Not provided'}\n` +
+        `Email: ${formData.email || 'Not provided'}\n` +
+        `Phone: ${formData.phone || 'Not provided'}\n` +
+        `Number of Persons: ${formData.numberOfPersons || 'Not provided'}`;
+      
+      const whatsappUrl = `https://wa.me/${PHONE_NUMBER.replace("+", "")}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank");
+    };
 
   return (
     <>
@@ -331,7 +427,7 @@ export default function PackagesPage() {
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="flex-1">
                       <p className="text-gray-600 mb-4 text-sm md:text-base">{pkg.description}</p>
                       <div className="space-y-2">
                         <p className="font-semibold text-gray-900 mb-2 text-sm">Package Includes:</p>
@@ -344,9 +440,12 @@ export default function PackagesPage() {
                       </div>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full bg-primary hover:bg-secondary text-white font-bold cursor-pointer">
-                        Book Now
-                      </Button>
+                    <Button 
+                  onClick={() => handleBookNow(pkg)}
+                  className="w-full bg-primary hover:bg-secondary text-white font-bold cursor-pointer"
+                >
+                  Book Now
+                </Button>
                     </CardFooter>
                   </Card>
                 ))}
@@ -384,6 +483,142 @@ export default function PackagesPage() {
         </section>
       </div>
       <Footer />
+
+
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="w-[calc(100%-2rem)] sm:w-full max-w-2xl max-h-[95vh] sm:max-h-[95vh] overflow-y-auto p-4 sm:p-6">
+          <DialogHeader className="pr-6 sm:pr-0">
+            <DialogTitle className="text-xl sm:text-2xl font-bold text-gray-900">
+              Book Package
+            </DialogTitle>
+            <DialogDescription className="text-xs sm:text-sm">
+              Fill in your details to request a quote or contact us via WhatsApp
+            </DialogDescription>
+          </DialogHeader>
+
+          {selectedPackage && (
+            <div className="border-2 border-primary/20 rounded-lg p-3 sm:p-4 bg-linear-to-br from-primary/5 to-secondary/5 mb-2 sm:mb-2">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-0 mb-3">
+                <div className="flex-1 min-w-0">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 wrap-break-word">
+                      {selectedPackage.title}
+                    </h3>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-3 flex-wrap">
+                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
+                    <span>{selectedPackage.duration}</span>
+                  </div>
+                </div>
+                {selectedPackage.bestSeller && (
+                  <span className="bg-primary text-white px-2 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold shrink-0 self-start">
+                    BEST SELLER
+                  </span>
+                )}
+              </div>
+              
+              <div className="flex items-baseline gap-2 mb-3 flex-wrap">
+                <span className="text-xl sm:text-2xl font-bold text-primary">{selectedPackage.price}</span>
+                {selectedPackage.originalPrice && (
+                  <>
+                    <span className="text-sm sm:text-base text-gray-500 line-through">{selectedPackage.originalPrice}</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded">
+                      {selectedPackage.discount}
+                    </span>
+                  </>
+                )}
+              </div>
+
+              <p className="text-xs sm:text-sm text-gray-600 mb-3 leading-relaxed">{selectedPackage.description}</p>
+            </div>
+          )}
+
+          <form onSubmit={handleRequestQuote} className="space-y-3 sm:space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 sm:mb-2">
+                Full Name *
+              </label>
+              <Input
+                id="name"
+                name="name"
+                type="text"
+                value={formData.name}
+                onChange={handleFormChange}
+                required
+                placeholder="Enter your full name"
+                className="w-full text-sm sm:text-base"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 sm:mb-2">
+                Email Address *
+              </label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleFormChange}
+                required
+                placeholder="Enter your email"
+                className="w-full text-sm sm:text-base"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="phone" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 sm:mb-2">
+                Phone Number *
+              </label>
+              <Input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleFormChange}
+                required
+                placeholder="Enter your phone number"
+                className="w-full text-sm sm:text-base"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="numberOfPersons" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 sm:mb-2">
+                Number of Persons *
+              </label>
+              <Input
+                id="numberOfPersons"
+                name="numberOfPersons"
+                type="number"
+                min="1"
+                value={formData.numberOfPersons}
+                onChange={handleFormChange}
+                required
+                placeholder="Enter number of persons"
+                className="w-full text-sm sm:text-base"
+              />
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-3 sm:pt-4">
+              <Button
+                type="submit"
+                disabled={loading}
+                className="w-full sm:flex-1 bg-primary hover:bg-secondary text-white font-bold py-5 sm:py-6 text-sm sm:text-base cursor-pointer"
+              >
+                <Send className="w-4 h-4 mr-2" />
+                {loading ? "Requesting..." : "Request Quote"}
+              </Button>
+              <Button
+                type="button"
+                onClick={handleWhatsApp}
+                className="w-full sm:flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-5 sm:py-6 text-sm sm:text-base cursor-pointer"
+              >
+                <MessageCircle className="w-4 h-4 mr-2" />
+                WhatsApp
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </>
   )
 }

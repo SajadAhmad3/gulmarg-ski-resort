@@ -15,6 +15,9 @@ import { Calendar, CheckCircle, ArrowRight, MessageCircle, Send } from "lucide-r
 import SectionHeading from "@/components/ui/section-heading";
 import { useRouter } from "next/navigation";
 import { PHONE_NUMBER } from "@/data/constants";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
+
 
 const packages = [
   {
@@ -113,6 +116,7 @@ export default function PackagesSection() {
   const router = useRouter();
   const [selectedPackage, setSelectedPackage] = useState<typeof packages[0] | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -139,13 +143,46 @@ export default function PackagesSection() {
     });
   };
 
-  const handleRequestQuote = (e: React.FormEvent) => {
+  const handleRequestQuote = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Request Quote:", { package: selectedPackage, formData });
-    alert("Thank you for your request! We'll get back to you soon.");
-    setIsDialogOpen(false);
+    if (!selectedPackage) return;
+  
+    setLoading(true);
+  
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          numberOfPersons: formData.numberOfPersons,
+  
+          // Package details
+          package_name: selectedPackage.title,
+          duration: selectedPackage.duration,
+          price: selectedPackage.price,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+  
+      toast.success("Thank you! We’ll contact you shortly.");
+      setIsDialogOpen(false);
+  
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        numberOfPersons: "",
+      });
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+  
 
   const handleWhatsApp = () => {
     if (!selectedPackage) return;
@@ -357,10 +394,11 @@ export default function PackagesSection() {
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-3 sm:pt-4">
               <Button
                 type="submit"
+                disabled={loading}
                 className="w-full sm:flex-1 bg-primary hover:bg-secondary text-white font-bold py-5 sm:py-6 text-sm sm:text-base cursor-pointer"
               >
                 <Send className="w-4 h-4 mr-2" />
-                Request Quote
+                {loading ? "Requesting..." : "Request Quote"}
               </Button>
               <Button
                 type="button"

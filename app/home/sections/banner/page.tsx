@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Phone, Calendar, Users, Send, MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { PHONE_NUMBER } from "@/data/constants";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
+
 
 const tripDurations = [
   { value: "2", label: "2 Nights 3 Days" },
@@ -38,6 +41,8 @@ export default function BannerSection() {
   const [days, setDays] = useState("");
   const [people, setPeople] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState(false);
+
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
@@ -56,21 +61,47 @@ export default function BannerSection() {
     };
   }, [nextSlide]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+  
     const newErrors: Record<string, string> = {};
-
     if (!phone) newErrors.phone = "Phone number is required";
     if (!days) newErrors.days = "Please select trip duration";
     if (!people) newErrors.people = "Please select number of people";
-
+  
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
-
-    router.push(`/contact-us?phone=${encodeURIComponent(phone)}&days=${days}&people=${people}`);
+  
+    setLoading(true);
+  
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          phone,
+          days,
+          people,
+          source: "Homepage Banner Form",
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+  
+      toast.success("Thank you! We’ll contact you shortly.");
+  
+      setPhone("");
+      setDays("");
+      setPeople("");
+      setErrors({});
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+  
 
   return (
     <div className="relative h-[85vh] min-h-[600px] max-h-[900px] overflow-hidden">
@@ -223,10 +254,11 @@ export default function BannerSection() {
 
               <Button
                 type="submit"
+              disabled = {loading}
                 className="w-full bg-primary hover:bg-secondary text-white py-2.5 text-base font-bold rounded-lg flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
-                Request Quote
+                {loading ? "Sending..." : "Request Quote"}
               </Button>
               <Button
                 type="button"
