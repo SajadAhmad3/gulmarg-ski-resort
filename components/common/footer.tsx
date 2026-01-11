@@ -14,6 +14,7 @@ import Link from "next/link";
 import navigationData from "@/data/nav.json";
 import { useRouter } from "next/navigation";
 import { PHONE_NUMBER, ALT_PHONE_NUMBER, ADDRESS, EMAIL } from "@/data/constants";
+import WhatsAppRedirect from "./whatsapp";
 
 const Footer = () => {
   const router = useRouter();
@@ -111,6 +112,9 @@ const Footer = () => {
         <p className="text-center pt-4 text-md text-white/70">
           Copyright &copy; <span className="text-primary font-semibold">Gulmarg Ski Resort</span> {new Date().getFullYear()}. All Rights Reserved.
         </p>
+      </div>
+      <div className="fixed bottom-8 right-4 md:right-8 z-50">
+        <WhatsAppRedirect />
       </div>
     </div>
   );
